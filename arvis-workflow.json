@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jopemachine/arvis-extension-validator/master/workflow-schema.json",
+  "defaultIcon": "icon.png",
+  "category": "Tools",
+  "creator": "Conan Lau",
+  "version": "0.0.2",
+  "description": "Show disk usage in Arvis",
+  "name": "arvis-diskusage",
+  "readme": "",
+  "webAddress": "https://github.com/lcc19941214/arvis-diskusage",
+  "enabled": true,
+  "commands": [
+    {
+      "type": "scriptFilter",
+      "command": "df",
+      "title": "Show disk usage",
+      "subtitle": "",
+      "scriptFilter": "node index.js \"{query}\"",
+      "runningSubtext": "searching...",
+      "withspace": true,
+      "argType": "optional",
+      "actions": [
+        {
+          "modifiers": "normal",
+          "type": "clipboard",
+          "text": "{query}"
+        },
+        {
+          "modifiers": "normal",
+          "type": "notification",
+          "title": "disk usage copied.",
+          "text": "{query}"
+        }
+      ]
+    }
+  ]
+}
